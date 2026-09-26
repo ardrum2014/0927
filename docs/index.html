@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f5f0e5">
+  <title>互動遊戲時間｜祥宇・麗紘</title>
+  <meta name="description" content="祥宇與麗紘的婚禮互動遊戲：終極密碼、捧花花落誰家、新人小故事與 QA 加碼時間。">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23f5f0e5'/%3E%3Cpath d='M7 46c13-2 19-17 29-21 7-3 11 9 21 21' fill='none' stroke='%236f7f75' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M12 51h40' stroke='%23b99762' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="backdrop" aria-hidden="true"></div>
+  <main class="stage" id="stage">
+    <header class="topbar">
+      <button class="icon-button back-button is-hidden" id="backButton" type="button" aria-label="回到互動遊戲時間">←</button>
+      <div class="brand" aria-label="祥宇與麗紘的婚禮">
+        <span>祥宇</span><span class="heart" aria-hidden="true">♡</span><span>麗紘</span>
+      </div>
+      <button class="icon-button" id="fullscreenButton" type="button" aria-label="切換全螢幕">⛶</button>
+    </header>
+
+    <section class="view home-view is-active" id="homeView" aria-labelledby="homeTitle">
+      <div class="home-heading">
+        <p class="eyebrow">WEDDING GAMES</p>
+        <h1 id="homeTitle">婚禮小遊戲</h1>
+        <div class="gold-rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="part-flow" aria-label="選擇婚禮互動遊戲階段">
+        <button class="part-card" type="button" data-part="part1">
+          <span class="part-number">PART 1</span>
+          <strong>幸運揭曉</strong>
+          <span>終極密碼・捧花花落誰家</span>
+        </button>
+        <div class="ceremony-divider" aria-label="PART 1 與 PART 2 的流程分隔">
+          <span class="ceremony-line" aria-hidden="true"></span>
+          <span class="ceremony-symbol" aria-hidden="true">♡</span>
+          <span class="ceremony-line" aria-hidden="true"></span>
+        </div>
+        <button class="part-card" type="button" data-part="part2">
+          <span class="part-number">PART 2</span>
+          <strong>新人挑戰</strong>
+          <span>新人小故事</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="view home-view part-view" id="partView" aria-labelledby="partTitle">
+      <div class="home-heading">
+        <p class="eyebrow" id="partEyebrow">PART 1</p>
+        <h1 id="partTitle">幸運揭曉</h1>
+        <div class="gold-rule" aria-hidden="true"></div>
+      </div>
+
+      <div class="game-grid-wrap">
+      <div class="game-grid" id="gameGrid">
+        <button class="game-card" type="button" data-part-card="part1" data-view="passwordView">
+          <span class="game-number">01</span>
+          <span class="game-icon" aria-hidden="true">⌁</span>
+          <span class="game-title">終極密碼</span>
+          <span class="game-note">神秘小禮物</span>
+        </button>
+
+        <button class="game-card" type="button" data-part-card="part1" data-view="wheelView">
+          <span class="game-number">02</span>
+          <span class="game-icon bouquet-mark" aria-hidden="true">✤</span>
+          <span class="game-title">捧花花落誰家</span>
+          <span class="game-note">幸運號碼輪盤</span>
+        </button>
+
+        <button class="game-card" type="button" data-part-card="part2" data-view="kahootView">
+          <span class="game-number">03</span>
+          <span class="game-icon" aria-hidden="true">?</span>
+          <span class="game-title">新人小故事</span>
+          <span class="game-note">Kahoot 互動問答</span>
+        </button>
+
+        <button class="game-card bonus-game-card" type="button" data-part-card="part2" data-view="qaView">
+          <span class="game-number">04</span>
+          <span class="game-icon" aria-hidden="true">＋</span>
+          <span class="game-title">QA 加碼時間！</span>
+          <span class="game-note">準備好接受挑戰</span>
+        </button>
+      </div>
+        <button class="bonus-reveal-button" id="bonusRevealButton" type="button" aria-label="展開 QA 加碼時間" aria-expanded="false" aria-controls="gameGrid">
+          <span aria-hidden="true">＋</span>
+        </button>
+        <div class="bonus-burst" id="bonusBurst" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="view bouquet-tease-view" id="bouquetTeaseView" aria-labelledby="bouquetTeaseTitle">
+      <div class="bouquet-tease-card">
+        <p class="eyebrow">WHO WILL BE THE ONE?</p>
+        <img src="assets/real-blue-bouquet.webp" alt="新娘的捧花">
+        <h2 id="bouquetTeaseTitle">還不知道誰中獎嗎？</h2>
+        <button class="primary-button bouquet-reveal-button" id="bouquetRevealButton" type="button">咦？</button>
+      </div>
+    </section>
+
+    <section class="view game-view" id="passwordView" aria-labelledby="passwordTitle">
+      <div class="section-heading">
+        <p class="eyebrow">神秘小禮物</p>
+        <h2 id="passwordTitle">終極密碼</h2>
+      </div>
+
+      <div class="password-layout">
+        <div class="range-panel">
+          <span class="range-label">目前範圍</span>
+          <div class="range-display" aria-live="polite">
+            <span id="rangeMin">0</span>
+            <span class="range-wave">～</span>
+            <span id="rangeMax">99</span>
+          </div>
+          <p class="status-message" id="passwordStatus">請先設定新郎指定的秘密數字</p>
+        </div>
+
+        <div class="control-card">
+          <div id="secretSetup">
+            <label for="secretInput">設定秘密數字</label>
+            <div class="number-row">
+              <input id="secretInput" type="password" inputmode="numeric" pattern="[0-9]*" maxlength="2" placeholder="0～99" autocomplete="off">
+              <button class="primary-button" id="lockSecretButton" type="button">鎖定答案</button>
+            </div>
+            <p class="control-hint">鎖定後答案會立即隱藏，不會顯示在投影畫面。</p>
+          </div>
+
+          <div class="is-hidden" id="guessControls">
+            <label for="guessInput">輸入賓客猜的數字</label>
+            <div class="number-row">
+              <input id="guessInput" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="2" placeholder="輸入數字" autocomplete="off">
+              <button class="primary-button" id="confirmGuessButton" type="button">確定猜測</button>
+            </div>
+            <p class="control-hint">只有按下「確定猜測」後才會判斷結果。</p>
+          </div>
+
+          <div class="history" id="guessHistory" aria-live="polite"></div>
+          <button class="text-button" id="resetPasswordButton" type="button">重新開始這一局</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="view game-view" id="wheelView" aria-labelledby="wheelTitle">
+      <div class="section-heading compact-heading">
+        <p class="eyebrow">新娘抽捧花</p>
+        <h2 id="wheelTitle">捧花花落誰家</h2>
+      </div>
+
+      <div class="wheel-layout">
+        <div class="wheel-stage">
+          <div class="wheel-pointer" aria-hidden="true"></div>
+          <canvas id="wheelCanvas" width="760" height="760" aria-label="幸運號碼輪盤"></canvas>
+          <button class="wheel-center-button" id="spinWheelButton" type="button">開始</button>
+        </div>
+
+        <div class="control-card wheel-controls">
+          <label for="wheelNumbers">輸入參加號碼</label>
+          <textarea id="wheelNumbers" rows="7" inputmode="numeric" placeholder="一行一個號碼，例如：&#10;1&#10;2&#10;3&#10;4">1&#10;2&#10;3&#10;4&#10;5&#10;6</textarea>
+          <button class="secondary-button" id="applyNumbersButton" type="button">套用號碼</button>
+          <p class="control-hint">可用換行、空格或逗號分隔；每個號碼只會出現一次。</p>
+          <p class="wheel-status" id="wheelStatus" aria-live="polite">已預設 1～6 號，準備抽出一位幸運得主</p>
+          <button class="text-button" id="resetWheelButton" type="button">清除並重新設定</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="view link-view" id="kahootView" aria-labelledby="kahootTitle">
+      <div class="link-card">
+        <p class="eyebrow">KAHOOT</p>
+        <div class="link-symbol" aria-hidden="true">?</div>
+        <h2 id="kahootTitle">新人小故事</h2>
+        <p>請賓客準備手機，一起猜猜新郎與新娘的小故事。</p>
+        <a class="primary-button link-button" href="https://create.kahoot.it/my-library/kahoots/460f4c43-f08e-4d7b-8f76-5446e20401ef" target="_blank" rel="noopener noreferrer">開啟 Kahoot 主持頁面</a>
+      </div>
+    </section>
+
+    <section class="view link-view" id="qaView" aria-labelledby="qaTitle">
+      <div class="link-card">
+        <p class="eyebrow">BONUS ROUND</p>
+        <div class="link-symbol plus-symbol" aria-hidden="true">＋</div>
+        <h2 id="qaTitle">QA 加碼時間！</h2>
+        <p>故事還沒結束，接下來是婚禮限定的加碼挑戰。</p>
+        <a class="primary-button link-button" href="https://docs.google.com/presentation/d/1xdy3YXbkzd_7eA5Mprwl-IYGzCcYbvpB/present?slide=id.p1" target="_blank" rel="noopener noreferrer">開始 QA 加碼</a>
+      </div>
+    </section>
+
+    <div class="winner-overlay" id="passwordWinner" role="dialog" aria-modal="true" aria-labelledby="passwordWinnerTitle">
+      <div class="winner-glow"></div>
+      <img class="winner-cauliflower" src="assets/green-cauliflower.webp" alt="" aria-hidden="true">
+      <div class="winner-copy password-winner-copy">
+        <span class="winner-kicker">THE LUCKY ONE</span>
+        <h2 id="passwordWinnerTitle">恭喜中獎！</h2>
+        <p>神秘小禮物就是你的了</p>
+        <button class="winner-button" type="button" data-close-winner="passwordWinner">回到遊戲</button>
+      </div>
+    </div>
+
+    <div class="winner-overlay" id="wheelWinner" role="dialog" aria-modal="true" aria-labelledby="wheelWinnerTitle">
+      <div class="winner-glow"></div>
+      <img class="winner-bouquet" src="assets/real-blue-bouquet.webp" alt="" aria-hidden="true">
+      <div class="winner-copy wheel-winner-copy">
+        <span class="winner-kicker">THE BOUQUET GOES TO</span>
+        <h2 id="wheelWinnerTitle">恭喜 <span id="winnerNumber"></span> 號</h2>
+        <p>接住下一份幸福</p>
+        <button class="winner-button" type="button" data-close-winner="wheelWinner">完成抽獎</button>
+      </div>
+    </div>
+
+    <div class="instruction-overlay" id="instructionOverlay" role="dialog" aria-modal="true" aria-labelledby="instructionTitle">
+      <div class="instruction-card">
+        <button class="instruction-close" id="instructionClose" type="button" aria-label="關閉關卡說明">×</button>
+        <p class="eyebrow">HOW TO PLAY</p>
+        <h2 id="instructionTitle">關卡說明</h2>
+        <p class="instruction-lead" id="instructionLead"></p>
+        <ol class="instruction-steps" id="instructionSteps"></ol>
+        <button class="primary-button instruction-start" id="instructionStart" type="button">開始關卡</button>
+      </div>
+    </div>
+
+    <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
